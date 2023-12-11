@@ -1,30 +1,30 @@
 const express = require("express");
 
 const app = express();
+const courses = [
+  { id: 1, name: "NodeJs" },
+  { id: 2, name: "ReactJs" },
+  { id: 3, name: "ReactNative" },
+  { id: 4, name: "Javascript" },
+];
 
 app.get("/", (req, res) => {
   res.send("hello");
 });
 
 app.get("/api/courses", (req, res) => {
-  res.send([1, 2, 3, 4, 5, 6]);
+  res.send(courses);
 });
 
-// route parameters
 app.get("/api/courses/:id", (req, res) => {
-    
-    res.send(req.params.id)
-})
-
-// query string parameters
-app.get("/api/books/:id", (req,res)=>{
-
-    res.send(req.query)
-
-})
-// attempt to read PORT environment variable which will be set by the hosting computer
-
-// to set env in windows powerShell >>> $set:VarName="Value"
+  // todo
+  // look for the id
+  // if exist return the course with given id
+  // otherwise return 404
+  const course = courses.find((c) => c.id === parseInt(req.params.id));
+  if (course) return res.send(course);
+  return res.status(404).send("course not found");
+});
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
