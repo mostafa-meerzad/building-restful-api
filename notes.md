@@ -41,3 +41,9 @@ app.get("/api/courses/:id", (req, res) => {
 
 ` url in the browser >>> https://localhost:3000/api/courses/100/?name=CodeWithMosh`
 
+
+## Posting data to server
+
+posting data is usually done by using request body.
+
+**by convention whenever you post an object to server and when server creates a new object/resource it should return that object in the body of response.**

@@ -1,6 +1,8 @@
 const express = require("express");
 
 const app = express();
+
+app.use(express.json());
 const courses = [
   { id: 1, name: "NodeJs" },
   { id: 2, name: "ReactJs" },
@@ -24,6 +26,21 @@ app.get("/api/courses/:id", (req, res) => {
   const course = courses.find((c) => c.id === parseInt(req.params.id));
   if (course) return res.send(course);
   return res.status(404).send("course not found");
+});
+
+app.post("/api/courses/", (req, res) => {
+  // todo
+  // create a course
+  // add to the collection of courses
+  // send the new course back to the client
+
+  const course = {
+    id: courses.length + 1,
+    name: req.body.name,
+  };
+
+  courses.push(course);
+  res.send(course);
 });
 
 const port = process.env.PORT || 3000;
