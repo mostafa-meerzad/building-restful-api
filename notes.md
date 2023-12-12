@@ -47,3 +47,20 @@ app.get("/api/courses/:id", (req, res) => {
 posting data is usually done by using request body.
 
 **by convention whenever you post an object to server and when server creates a new object/resource it should return that object in the body of response.**
+
+
+## Validating data passed by the user
+
+Use **joi** to validate data that is coming from client slide.
+
+```js
+const Joi = require("joi");
+
+// create a schema
+const schema = Joi.object({
+    key:value // joi validation methods
+})
+
+schema.validate({data object})
+
+```
